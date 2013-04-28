@@ -23,11 +23,11 @@ cp -r kernel-extras/mkboot $pwd
 cp -r kernel-extras/zip $pwd
 
 # Build entire kernel and create build log
-export DREAM_DEFCONF=dream_sprint_defconfig
+export AGAT_DEFCONF=agat_defconfig
 export ARCH_CONF=jf_spr_defconfig
-make headers_install
+make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} ${DREAM_DEFCONF}
 # make modules
-time make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} ${DREAM_DEFCONF} CC="ccache $pwd/kernel-extras/arm-eabi-4.6/bin/arm-eabi-gcc" 2>&1 | tee ~/logs/$version.txt
+# time make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} ${DREAM_DEFCONF} CC="ccache $pwd/kernel-extras/arm-eabi-4.6/bin/arm-eabi-gcc" 2>&1 | tee ~/logs/$version.txt
 
 echo "making boot image"
 cp arch/arm/boot/zImage mkboot/

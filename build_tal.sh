@@ -51,7 +51,7 @@ KRNRLS="AGAT-S4-Sprint-v1.0.0"
 # Target Settings
 #
 export ARCH=arm
-export CROSS_COMPILE=/home/agat/GS4/AGAT_GS4/kernel-extras/arm-eabi-4.6/bin/arm-eabi-
+export CROSS_COMPILE=/home/agat/GS4/kernel-extras/arm-eabi-4.6/bin/arm-eabi-
 export USE_SEC_FIPS_MODE=true
 
 if [ "${1}" != "" ];
