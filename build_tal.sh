@@ -28,7 +28,7 @@ export INITRAMFS_SOURCE="${KERNELDIR}/../initramfs-sgs4-sprint"
 export INITRAMFS_TMP="/tmp/initramfs-s4sprint"
 export RELEASEDIR="${KERNELDIR}/../releases"
 # Target
-export DREAM_DEFCONF=dream_sprint_defconfig
+export AGAT_DEFCONF=agat_defconfig
 export ARCH_CONF=jf_spr_defconfig
 
 # get time of startup
@@ -38,7 +38,7 @@ time_start=$(date +%s.%N)
 # export RAMFSBRANCH=cm10-testing
 
 # Build Hostname
-export KBUILD_BUILD_HOST=`hostname | sed 's|ip-projects.de|dream-irc.com|g'`
+# export KBUILD_BUILD_HOST=`hostname | sed 's|ip-projects.de|dream-irc.com|g'`
 
 #
 # Version of this Build
@@ -75,11 +75,11 @@ make -j8 distclean
 
 if [ ! -f $KERNELDIR/.config ];
 then
-  if [ ! -f $KERNELDIR/arch/arm/configs/$DREAM_DEFCONF ];
+  if [ ! -f $KERNELDIR/arch/arm/configs/$AGAT_DEFCONF ];
   then
     clear
     echo -e "  "
-    echo -e "${BLDRED}Error: can not find default Kernel Config: ${DREAM_DEFCONF} !${TXTCLR}"
+    echo -e "${BLDRED}Error: can not find default Kernel Config: ${AGAT_DEFCONF} !${TXTCLR}"
     echo -e "${BLDRED}Critical Error, Exiting ... !${TXTCLR}"
     echo -e "  "
     # finished? get elapsed time
@@ -88,8 +88,8 @@ then
     echo -e "  "
     exit 1
   fi
-  echo -e "${TXTYLW}Creating Kernel config from default: ${DREAM_DEFCONF} ${TXTCLR}"
-  make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} ${DREAM_DEFCONF}  
+  echo -e "${TXTYLW}Creating Kernel config from default: ${AGAT_DEFCONF} ${TXTCLR}"
+  make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} ${AGAT_DEFCONF}  
   echo -e "${TXTYLW}Kernel config created ...${TXTCLR}"
 fi
 

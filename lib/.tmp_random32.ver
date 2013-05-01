@@ -1,3 +1,0 @@
-__crc_prandom32 = 0xf1216c75 ;
-__crc_random32 = 0xb86e4ab9 ;
-__crc_srandom32 = 0xb89af9bf ;

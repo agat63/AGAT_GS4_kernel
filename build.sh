@@ -27,7 +27,7 @@ export DREAM_DEFCONF=dream_sprint_defconfig
 export ARCH_CONF=jf_spr_defconfig
 make headers_install
 # make modules
-time make -j8 CC="ccache $pwd/kernel-extras/arm-eabi-4.6/bin/arm-eabi-gcc" 2>&1 | tee ~/logs/$version.txt
+time make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} ${DREAM_DEFCONF} CC="ccache $pwd/kernel-extras/arm-eabi-4.6/bin/arm-eabi-gcc" 2>&1 | tee ~/logs/$version.txt
 
 echo "making boot image"
 cp arch/arm/boot/zImage mkboot/
