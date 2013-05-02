@@ -25,11 +25,13 @@ CWM_ZIP=no		# yes/no
 export KERNELDIR=`readlink -f .`
 export TOOLBIN="${KERNELDIR}/../bin"
 export INITRAMFS_SOURCE="${KERNELDIR}/../initramfs-sgs4-sprint"
-export INITRAMFS_TMP="/tmp/initramfs-s4sprint"
+export INITRAMFS_TMP="/tmp/initramfs-sgs4-sprint"
 export RELEASEDIR="${KERNELDIR}/../releases"
 # Target
 export AGAT_DEFCONF=agat_defconfig
 export ARCH_CONF=jf_spr_defconfig
+export SELINUX_CONF=jfselinux_defconfig
+export SELINUX_LOGCONF=jfselinux_log_defconfig
 
 # get time of startup
 time_start=$(date +%s.%N)
@@ -44,7 +46,7 @@ time_start=$(date +%s.%N)
 # Version of this Build
 #
 ## 1.0 for initial build
-KRNRLS="AGAT-S4-Sprint-v1.0.0"
+KRNRLS="AGAT_GS4_v0.1.0"
 
 
 #
@@ -89,7 +91,7 @@ then
     exit 1
   fi
   echo -e "${TXTYLW}Creating Kernel config from default: ${AGAT_DEFCONF} ${TXTCLR}"
-  make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} ${AGAT_DEFCONF}  
+  make ARCH=arm VARIANT_DEFCONFIG=${ARCH_CONF} SELINUX_DEFCONFIG=${SELINUX_CONF} SELINUX_LOG_DEFCONFIG=${SELINUX_LOGCONF} ${AGAT_DEFCONF}  
   echo -e "${TXTYLW}Kernel config created ...${TXTCLR}"
 fi
 
